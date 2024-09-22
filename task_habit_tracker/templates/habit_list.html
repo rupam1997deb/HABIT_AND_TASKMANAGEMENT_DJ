@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Daily Habit Logs{% endblock %}
+
+{% block content %}
+
+
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div class="bg-blue-100 p-4 rounded-t-lg font-semibold flex justify-between items-center">
+        <span>Habit Log List</span>
+        <a href="{% url 'download_habits' %}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+            Download Habit Logs as CSV
+        </a>
+    </div>
+    
+    <div class="p-4">
+        <div class="max-h-96 overflow-y-auto">
+            <table class="min-w-full border border-gray-300">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="border border-gray-300 p-2">Date</th>
+                        <th class="border border-gray-300 p-2">Woke Up by 6:30 AM</th>
+                        <th class="border border-gray-300 p-2">Gratitude Written</th>
+                        <th class="border border-gray-300 p-2">Completed Workout</th>
+                        <th class="border border-gray-300 p-2">Book Reading Completed</th>
+                        <th class="border border-gray-300 p-2">Solved 5 Python Problems</th>
+                        <th class="border border-gray-300 p-2">Asleep by 12:00 AM</th>
+                        <th class="border border-gray-300 p-2">Learning Advanced Python Topics</th>
+                        <th class="border border-gray-300 p-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for habit in habits %}
+                    <tr class="hover:bg-gray-50">
+                        <td class="border border-gray-300 p-2">{{ habit.date }}</td>
+                        <td class="border border-gray-300 p-2 {% if habit.wakeup_time == 'Yes' %}bg-green-100{% else %}bg-red-100{% endif %}">
+                            {{ habit.wakeup_time }}
+                        </td>
+                        <td class="border border-gray-300 p-2 {% if habit.gratitude_written == 'Yes' %}bg-green-100{% else %}bg-red-100{% endif %}">
+                            {{ habit.gratitude_written }}
+                        </td>
+                        <td class="border border-gray-300 p-2 {% if habit.workout_done == 'Yes' %}bg-green-100{% else %}bg-red-100{% endif %}">
+                            {{ habit.workout_done }}
+                        </td>
+                        <td class="border border-gray-300 p-2 {% if habit.book_reading_done == 'Yes' %}bg-green-100{% else %}bg-red-100{% endif %}">
+                            {{ habit.book_reading_done }}
+                        </td>
+                        <td class="border border-gray-300 p-2 {% if habit.python_problems_solved == 'Yes' %}bg-green-100{% else %}bg-red-100{% endif %}">
+                            {{ habit.python_problems_solved }}
+                        </td>
+                        <td class="border border-gray-300 p-2 {% if habit.asleep_by_midnight == 'Yes' %}bg-green-100{% else %}bg-red-100{% endif %}">
+                            {{ habit.asleep_by_midnight }}
+                        </td>
+                        <td class="border border-gray-300 p-2 {% if habit.python_advanced == 'Yes' %}bg-green-100{% else %}bg-red-100{% endif %}">
+                            {{ habit.python_advanced }}
+                        </td>
+                        <td class="border border-gray-300 p-2">
+                            <a href="{% url 'update_habit' habit.id %}" class="text-blue-600 hover:underline">Edit</a>
+                            <a href="{% url 'delete_habit' habit.id %}" class="text-red-600 hover:underline ml-2">Delete</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" class="text-center border border-gray-300 p-2">No habits logged yet.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="{% url 'add_daily_habit' %}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Add New Habit Log
+    </a>
+</div>
+
+{% endblock %}

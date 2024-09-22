@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-8 text-center rounded-lg shadow-lg">
+    <h1 class="text-4xl font-extrabold text-white mb-4">Welcome, Rupam!</h1>
+    <p class="text-xl text-white mb-6">Track your daily habits and manage your tasks efficiently.</p>
+    <hr class="my-4 border-gray-300">
+    <p class="text-lg text-white mb-6">Choose an option to get started:</p>
+    <div class="flex justify-center space-x-4">
+        <a class="bg-green-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-green-700 transition transform hover:scale-105 shadow-md" href="{% url 'add_daily_habit' %}">
+            Add Habit
+        </a>
+        <a class="bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-700 transition transform hover:scale-105 shadow-md" href="{% url 'add_task' %}" role="button">
+            Add Task
+        </a>
+    </div>
+</div>
+{% endblock %}

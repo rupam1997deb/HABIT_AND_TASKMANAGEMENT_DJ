@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Daily Habit{% endblock %}
+
+{% block content %}
+<div class="max-w-md mx-auto bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-md p-6 mt-10">
+    <h2 class="text-2xl font-bold mb-6 text-center text-white">Add Daily Habit Log</h2>
+    <form method="post" class="space-y-6">
+        {% csrf_token %}
+        
+        <div>
+            <label for="date" class="block text-sm font-medium text-gray-200">Date:</label>
+            <input type="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="date" name="date" required>
+        </div>
+        
+        <div>
+            <label for="wakeup_time" class="block text-sm font-medium text-gray-200">Woke Up by 6:30 AM?</label>
+            <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="wakeup_time" name="wakeup_time" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="gratitude_written" class="block text-sm font-medium text-gray-200">Gratitude Written?</label>
+            <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="gratitude_written" name="gratitude_written" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="workout_done" class="block text-sm font-medium text-gray-200">Completed Workout?</label>
+            <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="workout_done" name="workout_done" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="book_reading_done" class="block text-sm font-medium text-gray-200">Book Reading Completed?</label>
+            <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="book_reading_done" name="book_reading_done" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="python_problems_solved" class="block text-sm font-medium text-gray-200">Solved 5 Python Problems?</label>
+            <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="python_problems_solved" name="python_problems_solved" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="python_advanced" class="block text-sm font-medium text-gray-200">Learning Advanced Python Topics?</label>
+            <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="python_advanced" name="python_advanced" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="asleep_by_midnight" class="block text-sm font-medium text-gray-200">Asleep by 12:00 AM?</label>
+            <select class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="asleep_by_midnight" name="asleep_by_midnight" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <button type="submit" class="mt-6 w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">Add Habit Log</button>
+    </form>
+</div>
+{% endblock %}

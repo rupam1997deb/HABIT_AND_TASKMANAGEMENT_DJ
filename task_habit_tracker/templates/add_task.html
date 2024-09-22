@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 rounded-lg shadow-lg p-6 mt-10">
+    <h1 class="text-2xl font-bold mb-6 text-center text-white">Add New Task</h1>
+    <form method="POST" class="space-y-4">
+        {% csrf_token %}
+        <div>
+            <label class="block text-sm font-medium text-gray-200" for="date">
+                Date
+            </label>
+            <input type="date" name="date" id="date" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-200" for="task_name">
+                Task Name
+            </label>
+            <input type="text" name="task_name" id="task_name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-200" for="status">
+                Status
+            </label>
+            <select name="status" id="status" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <option value="Pending">Pending</option>
+                <option value="Completed">Completed</option>
+                <option value="In Progress">In Progress</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-200" for="category">
+                Category
+            </label>
+            <select name="category" id="category" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <option value="Personal">Personal Learning</option>
+                <option value="Office Learning">Office Learning</option>
+            </select>
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-200" for="roadblocks">
+                Task Description
+            </label>
+            <textarea name="roadblocks" id="roadblocks" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500" rows="3"></textarea>
+        </div>
+        <div class="flex items-center justify-between">
+            <button type="submit" class="mt-4 bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                Add Task
+            </button>
+        </div>
+    </form>
+    <a href="{% url 'task_list' %}" class="text-blue-200 hover:underline mt-4 inline-block">Back to Task List</a>
+</div>
+{% endblock %}
